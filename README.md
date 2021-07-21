@@ -3,8 +3,8 @@ Relatórios de materiais da FUCT
 
 ## Tecnologias
 - VueJS com Vuetify
-- Firebase com Hosting e Firestore
-- Azure com App Service
+- Firebase com Hosting CDN e Firestore DB
+- Microsoft Azure com App Service
 - NET Core 5 com AutoMapper e FluentValidation
 
 ## Arquiterura
