@@ -2,15 +2,14 @@
 Relatórios de materiais da FUCT
 
 ## Tecnologias
-- VueJS
-- TypeScript
-- Firebase
-- Azure
-- NET Core 5
+- VueJS com Vuetify
+- Firebase com Hosting e Firestore
+- Azure com App Service
+- NET Core 5 com AutoMapper e FluentValidation
 
 ## Arquiterura
-- Frontend reativo com vue e firebase
-- Backend no padrão CQRS em .NET 5 hospedado no Azure
+- Frontend reativo com VueX e VueRouter
+- Backend em WebApi no padrão CQRS
 
 ## Como rodar o frontend?
 ```
