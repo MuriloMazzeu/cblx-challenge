@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using CblxChallenge.Domain.Entities;
 
 namespace CblxChallenge
 {
@@ -17,8 +18,9 @@ namespace CblxChallenge
             services.AddScoped<IFreighterCommandService, FreighterCommandService>();
             services.AddScoped<IReceivedMineralsRepository, FirestoreService>();
             services.AddScoped<IFreighterRepository, FirestoreService>();
+            services.AddScoped<ISmk186Service, Smk186Service>();
 
-            var assembly = GetType().Assembly;
+            var assembly = typeof(FreighterTransportEntity).Assembly;
             services.AddValidatorsFromAssembly(assembly);
             services.AddAutoMapper(assembly);
 

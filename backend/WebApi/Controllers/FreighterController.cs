@@ -25,17 +25,8 @@ namespace CblxChallenge.Controllers
         {
             try
             {
-                return Ok(new CommandResult
-                {
-                    Success = false,
-                    Message = "Teste de Erro"
-                });
-
-                await CommandService.ExecuteAsync(checkin);
-                return Ok(new CommandResult
-                {
-                    Success = true,
-                });
+                var result = await CommandService.ExecuteAsync(checkin);
+                return Ok(result);
             }
             catch (Exception ex)
             {

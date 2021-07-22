@@ -7,6 +7,5 @@ namespace CblxChallenge.Domain.Application
     {
         Task ExecuteAsync(FreighterCheckoutCommand command);
         Task<CommandResult> ExecuteAsync(FreighterCheckinCommand command);
-        Task DataLoadAsync();
     }
 }

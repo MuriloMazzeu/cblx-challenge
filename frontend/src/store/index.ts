@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    apiurl: 'https://localhost:5001/'
+    apiurl: 'https://cblx-challenge.azurewebsites.net/'
   },
   mutations: {
   },

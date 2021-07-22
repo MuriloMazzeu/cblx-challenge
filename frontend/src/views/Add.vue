@@ -30,6 +30,7 @@
                 <tr>
                   <th class="text-left">Id</th>
                   <th class="text-left">Classe</th>
+                  <th class="text-left">Prioridade</th>
                   <th class="text-left">Data de Saída</th>
                   <th></th>
                 </tr>
@@ -41,6 +42,7 @@
                 <tr v-else v-for="item in transports" :key="item.id">
                   <td>{{ item.id }}</td>
                   <td>{{ item.Type }}</td>
+                  <td>Minério {{ priorityFor(item) }}</td>
                   <td>{{ item.startAt }}</td>
                   <td class="text-right">
                     <v-dialog max-width="290">
@@ -52,7 +54,7 @@
                         <v-card-text>
                           <date-time-picker v-model="item.endDate" :min-date-time="item.startAtISO" label="Data de Retorno" ref="inDT" />
                           <v-select filled :items="mineralsFor(item.Type)" label="Mineral" prepend-inner-icon="mdi-diamond-stone" v-model="item.mineral"></v-select>
-                          <v-text-field filled hint="Peso em quilos" type="number" placeholder="500" inputmode="numeric" min="1" step="1" :max="maxWeightFor(item.Type)" label="Quantidade" prepend-inner-icon="mdi-weight-kilogram" v-model="item.amount"></v-text-field>
+                          <v-text-field filled hint="Peso em quilos" type="number" :placeholder="maxWeightFor(item.Type) + ''" inputmode="numeric" min="1" step="1" :max="maxWeightFor(item.Type)" label="Quantidade" prepend-inner-icon="mdi-weight-kilogram" v-model="item.amount"></v-text-field>
                         </v-card-text>
                         <v-card-actions>
                           <v-spacer></v-spacer>
@@ -140,6 +142,7 @@ export default Vue.extend({
         amount: item.amount,
         mineral: item.mineral,
         endAt: item.endDate,
+        startAt: item.startAtISO,
         requestId: Math.round(Math.random() * 1000).toString(),
       })
       
@@ -163,6 +166,11 @@ export default Vue.extend({
       if(type == 'II') return ['A']
       if(type == 'III') return ['C']
       if(type == 'IV') return ['B', 'C']
+    },
+
+    priorityFor(item: any) {
+      if(item.RecommendedMineral) return item.RecommendedMineral
+      else return this.mineralsFor(item.Type)![0]
     },
 
     maxWeightFor(type: string): number {
